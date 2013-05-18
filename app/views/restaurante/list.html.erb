@@ -1,0 +1,31 @@
+<div class="container-fluid" style="margin-bottom: 48px; padding-top: 32px;">
+
+<div class="row-fluid">
+  <div class="hero-unit">
+    <div class="row-fluid">
+
+      <div class="span6">
+        <p></p><h1><%= t(:partiu) %> <%= @restaurante.nome %> ?</h1><p></p>
+
+        <br><br>
+        <p></p>
+        <p></p>
+
+        <p class="lead">
+          <%= @restaurante.endereco %>
+        </p>
+        <%= link_to t(:nao), {:action => 'list'}, :class => 'btn btn-large btn-primary' %>
+      </div>
+
+      <div class="span6">
+        <center>
+          <img src="<%= @restaurante.image.url %>" width="600px" height="600px"/>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Put this tag wherever you want your button to appear -->
+
+</div>

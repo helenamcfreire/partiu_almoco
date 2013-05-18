@@ -1,0 +1,14 @@
+<% if !@restaurante.nil? && @restaurante.errors.any? %>
+    <% @restaurante.errors.full_messages.each do |msg| %>
+        <span><%= msg %></span>
+    <% end %>
+<% end %>
+
+<%= form_for @restaurante, :url => {:action => 'create'} do |r| %>
+
+    <%= r.text_field :nome %><br/>
+    <%= r.text_field :endereco %><br/>
+    <%= r.file_field :image %><br/>
+    <%= r.submit t(:cadastrar) %>
+
+<% end %>
