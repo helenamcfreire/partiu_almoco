@@ -10,9 +10,52 @@
   <link href="/assets/bootstrap-responsive.css" rel="stylesheet">
 
   <%= csrf_meta_tags %>
+  
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBjCmHNmgYtzjImhQRDdD8uC5eDK9Uedhc&sensor=false&v=3.exp"></script>
+
+  <script type="text/javascript">
+
+      var map;
+      var latLng;
+
+      function initMap() {
+
+          var mapOptions = {
+              zoom: 17,
+              center: latLng,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          }
+
+          map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+          var geocoder = new google.maps.Geocoder();
+
+          var address = '<%= @restaurante.endereco %>'
+
+          geocoder.geocode( { 'address': address}, function(results, status) {
+
+              if (status == google.maps.GeocoderStatus.OK) {
+
+                  latLng = results[0].geometry.location;
+
+                  map.setCenter(latLng);
+
+                  var marker = new google.maps.Marker({
+                      map: map,
+                      position: results[0].geometry.location
+                  });
+
+              } else {
+                  alert("Geocode was not successful for the following reason: " + status);
+              }
+          });
+
+      }
+
+  </script>  
 
 </head>
-<body>
+<body onload="initMap()">
 
 <%= yield %>
 

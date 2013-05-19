@@ -1,0 +1,3 @@
+:bucket => ENV['partiualmoco'],
+		:access_key_id => ENV['AKIAJRWQPRNPYQBXVEPQ'],
+		:secret_access_key => ENV['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']
